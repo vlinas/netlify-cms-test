@@ -24,12 +24,11 @@ collections:
   - name: "products"
     label: "Products"
     folder: "src/pages/products"
-    identifier-field: title
     create: true
     slug: "{{slug}}"
     fields:
-      # - {label: "Template Key", name: "templateKey", widget: "hidden", default: "blog-post"}
-      - {label: "Product Name", name: "name", widget: "string"}
+      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "product-page"}
+      - {label: "Title", name: "title", widget: "string"}
       - {label: "Publish Date", name: "date", widget: "date"}
       - {label: "Description", name: "description", widget: "text"}
       - {label: "Stock", name: "stock", widget: "boolean"}

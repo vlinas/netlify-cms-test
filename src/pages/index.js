@@ -2,7 +2,8 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
-import BlogRoll from '../components/BlogRoll'
+// import BlogRoll from '../components/BlogRoll'
+import ProductRoll from '../components/ProductRoll'
 
 const HomePage = ({
   data: {
@@ -21,7 +22,7 @@ const HomePage = ({
             style={{ marginBottom: '6rem' }}
           >
             <h1 className="title is-size-2 is-bold-light">Products</h1>
-            <BlogRoll/>
+            <ProductRoll/>
           </div>
         </div>
       </div>
