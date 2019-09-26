@@ -1,70 +1,62 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { Link, graphql, StaticQuery } from 'gatsby'
-import PreviewCompatibleImage from './PreviewCompatibleImage'
+import React from "react";
+import PropTypes from "prop-types";
+import { Link, graphql, StaticQuery } from "gatsby";
+import PreviewCompatibleImage from "./PreviewCompatibleImage";
 
 class ProductRoll extends React.Component {
   render() {
-    const { data } = this.props
-    const { edges: posts } = data.allMarkdownRemark
+    const { data } = this.props;
+    const { edges: products } = data.allMarkdownRemark;
 
     return (
       <div className="columns is-multiline">
-        {posts &&
-          posts.map(({ node: post }) => (
-            <div className="is-parent column is-6" key={post.id}>
-              <article
-                className={`blog-list-item tile is-child box notification ${
-                  post.frontmatter.featuredpost ? 'is-featured' : ''
-                }`}
-              >
-                <header>
-                  {post.frontmatter.featuredimage ? (
-                    <div className="featured-thumbnail">
-                      <PreviewCompatibleImage
-                        imageInfo={{
-                          image: post.frontmatter.featuredimage,
-                          alt: `featured image thumbnail for post ${post.title}`,
-                        }}
-                      />
-                    </div>
-                  ) : null}
-                  <p className="post-meta">
-                    <Link
-                      className="title has-text-primary is-size-4"
-                      to={post.fields.slug}
-                    >
-                      {post.frontmatter.title}
-                    </Link>
-                    <span> &bull; </span>
-                    <span className="subtitle is-size-5 is-block">
-                      {post.frontmatter.date}
-                    </span>
+        {products &&
+          products.map(({ node: product }) => (
+            <div className="column is-4" key={product.id}>
+              <div className="product-box box">
+                <Link to={product.fields.slug}>
+                  <div className="product-image">
+                    {product.frontmatter.image ? (
+                      <div className="featured-thumbnail">
+                        <PreviewCompatibleImage
+                          imageInfo={{
+                            image: product.frontmatter.image,
+                            alt: `featured image thumbnail for post ${product.title}`
+                          }}
+                        />
+                      </div>
+                    ) : null}
+                  </div>
+                  <div className="product-title">
+                    <h2>{product.frontmatter.title}</h2>
+                  </div>
+                </Link>
+                <div className="product-meta">
+                  <p>{product.frontmatter.description}</p>
+                  <p>
+                    GBP {product.frontmatter.pricepounds} / USD{" "}
+                    {product.frontmatter.pricedollars} / EUR{" "}
+                    {product.frontmatter.priceeuros}
                   </p>
-                </header>
-                <p>
-                  {post.excerpt}
-                  <br />
-                  <br />
-                  <Link className="button" to={post.fields.slug}>
-                    Keep Reading →
-                  </Link>
-                </p>
-              </article>
+                </div>
+                <Link className="button" to={product.fields.slug}>
+                  Buy Now
+                </Link>
+              </div>
             </div>
           ))}
       </div>
-    )
+    );
   }
 }
 
 ProductRoll.propTypes = {
   data: PropTypes.shape({
     allMarkdownRemark: PropTypes.shape({
-      edges: PropTypes.array,
-    }),
-  }),
-}
+      edges: PropTypes.array
+    })
+  })
+};
 
 export default () => (
   <StaticQuery
@@ -72,23 +64,25 @@ export default () => (
       query ProductRollQuery {
         allMarkdownRemark(
           sort: { order: DESC, fields: [frontmatter___date] }
-          filter: { frontmatter: { templateKey: { eq: "blog-post" } } }
+          filter: { frontmatter: { templateKey: { eq: "product-page" } } }
         ) {
           edges {
             node {
-              excerpt(pruneLength: 400)
               id
               fields {
                 slug
               }
+              excerpt
               frontmatter {
                 title
+                description
+                pricepounds
+                pricedollars
+                priceeuros
                 templateKey
-                date(formatString: "MMMM DD, YYYY")
-                featuredpost
-                featuredimage {
+                image {
                   childImageSharp {
-                    fluid(maxWidth: 120, quality: 100) {
+                    fluid(maxWidth: 300, quality: 80) {
                       ...GatsbyImageSharpFluid
                     }
                   }
@@ -101,4 +95,4 @@ export default () => (
     `}
     render={(data, count) => <ProductRoll data={data} count={count} />}
   />
-)
+);
