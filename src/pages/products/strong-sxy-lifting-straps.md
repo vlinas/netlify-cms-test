@@ -3,7 +3,7 @@ templateKey: product-page
 title: Strong & Sxy Lifting Straps
 date: 2019-09-27T11:16:13.896Z
 description: 'They will literally change your training game ! '
-stock: true
+stock: false
 live: true
 image: /img/straps-1.jpg
 pricepounds: 15.99

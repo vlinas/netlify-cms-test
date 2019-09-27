@@ -7,7 +7,6 @@ class ProductRoll extends React.Component {
   render() {
     const { data } = this.props;
     const { edges: products } = data.allMarkdownRemark;
-
     return (
       <div className="columns is-multiline">
         {products &&
@@ -38,11 +37,18 @@ class ProductRoll extends React.Component {
                     {product.frontmatter.pricedollars} / EUR{" "}
                     {product.frontmatter.priceeuros}
                   </p>
+                  {!product.frontmatter.stock ? (
+                    <Link className="button" to={product.fields.slug}>
+                      {" "}
+                      Buy Now{" "}
+                    </Link>
+                  ) : (
+                    <h3>SOLD OUT</h3>
+                  )}
                 </div>
-                <Link className="button" to={product.fields.slug}>
-                  Buy Now
-                </Link>
               </div>
+              {/* {JSON.stringify(products)} */}
+              {/* {(!product.frontmatter.live) == false && <p>asdasd</p>} */}
             </div>
           ))}
       </div>
@@ -80,6 +86,9 @@ export default () => (
                 pricedollars
                 priceeuros
                 templateKey
+                variant
+                stock
+                live
                 image {
                   childImageSharp {
                     fluid(maxWidth: 300, quality: 80) {
