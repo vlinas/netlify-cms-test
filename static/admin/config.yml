@@ -24,4 +24,42 @@ collections:
       - {label: "Price Euros", name: "priceeuros", widget: "number", valueType: "float"}
       - {label: "Price Dollars", name: "pricedollars", widget: "number", valueType: "float"}
       - {label: "Variant ID", name: "variant", widget: "number", default: 0}
+  
+  - name: "guides"
+    label: "Guides"
+    folder: "src/pages/guides"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "guides-page"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "date"}
+      - {label: "Short Description", name: "description", widget: "text"}
+      - {label: "Stock", name: "stock", widget: "boolean"}
+      - {label: "is Live", name: "live", widget: "boolean"}
+      - {label: "Image", name: "image", widget: image}
+      - {label: "Long Description", name: "body", widget: "markdown"}
+      - {label: "Price Pounds", name: "pricepounds", widget: "number", valueType: "float"}
+      - {label: "Price Euros", name: "priceeuros", widget: "number", valueType: "float"}
+      - {label: "Price Dollars", name: "pricedollars", widget: "number", valueType: "float"}
+      - {label: "Variant ID", name: "variant", widget: "number", default: 0}
+
+  - name: "bundles"
+    label: "Bundles"
+    folder: "src/pages/bundles"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "bundles-page"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "date"}
+      - {label: "Short Description", name: "description", widget: "text"}
+      - {label: "Stock", name: "stock", widget: "boolean"}
+      - {label: "is Live", name: "live", widget: "boolean"}
+      - {label: "Image", name: "image", widget: image}
+      - {label: "Long Description", name: "body", widget: "markdown"}
+      - {label: "Price Pounds", name: "pricepounds", widget: "number", valueType: "float"}
+      - {label: "Price Euros", name: "priceeuros", widget: "number", valueType: "float"}
+      - {label: "Price Dollars", name: "pricedollars", widget: "number", valueType: "float"}
+      - {label: "Variant ID", name: "variant", widget: "number", default: 0}
       
