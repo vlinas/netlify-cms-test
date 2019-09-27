@@ -16,11 +16,11 @@ const ProductPagePreview = ({ entry, getAsset }) => {
     <ProductPageTemplate
       image={entry.getIn(['data', 'image'])}
       title={entry.getIn(['data', 'title'])}
-      heading={entry.getIn(['data', 'heading'])}
+      // heading={entry.getIn(['data', 'heading'])}
       description={entry.getIn(['data', 'description'])}
       intro={{ blurbs }}
       main={{
-        heading: entry.getIn(['data', 'main', 'heading']),
+        // heading: entry.getIn(['data', 'main', 'heading']),
         description: entry.getIn(['data', 'main', 'description']),
         image1: {
           image: getAsset(entry.getIn(['data', 'main', 'image1', 'image'])),
@@ -38,7 +38,7 @@ const ProductPagePreview = ({ entry, getAsset }) => {
       fullImage={entry.getIn(['data', 'full_image'])}
       testimonials={testimonials}
       pricing={{
-        heading: entry.getIn(['data', 'pricing', 'heading']),
+        // heading: entry.getIn(['data', 'pricing', 'heading']),
         description: entry.getIn(['data', 'pricing', 'description']),
         plans: pricingPlans,
       }}
