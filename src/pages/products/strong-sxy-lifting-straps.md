@@ -5,7 +5,7 @@ date: 2019-09-27T11:16:13.896Z
 description: 'They will literally change your training game ! '
 stock: true
 live: true
-productimage: /img/straps-1.jpg
+image: /img/straps-1.jpg
 pricepounds: 15.99
 priceeuros: 18.23
 pricedollars: 20.88

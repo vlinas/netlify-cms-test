@@ -18,7 +18,7 @@ collections:
       - {label: "Short Description", name: "description", widget: "text"}
       - {label: "Stock", name: "stock", widget: "boolean"}
       - {label: "is Live", name: "live", widget: "boolean"}
-      - {label: "Image", name: "productimage", widget: image}
+      - {label: "Image", name: "image", widget: image}
       - {label: "Long Description", name: "body", widget: "markdown"}
       - {label: "Price Pounds", name: "pricepounds", widget: "number", valueType: "float"}
       - {label: "Price Euros", name: "priceeuros", widget: "number", valueType: "float"}
