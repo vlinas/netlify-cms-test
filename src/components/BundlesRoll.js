@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Link, graphql, StaticQuery } from "gatsby";
 import PreviewCompatibleImage from "./PreviewCompatibleImage";
 
-class ProductRoll extends React.Component {
+class BundlesRoll extends React.Component {
   render() {
     const { data } = this.props;
     const { edges: products } = data.allMarkdownRemark;
@@ -57,7 +57,7 @@ class ProductRoll extends React.Component {
   }
 }
 
-ProductRoll.propTypes = {
+BundlesRoll.propTypes = {
   data: PropTypes.shape({
     allMarkdownRemark: PropTypes.shape({
       edges: PropTypes.array
@@ -68,10 +68,10 @@ ProductRoll.propTypes = {
 export default () => (
   <StaticQuery
     query={graphql`
-      query ProductRollQuery {
+      query BundlesRollQuery {
         allMarkdownRemark(
           sort: { order: DESC, fields: [frontmatter___date] }
-          filter: { frontmatter: { templateKey: { eq: "product-page" } } }
+          filter: { frontmatter: { templateKey: { eq: "bundles-page" } } }
         ) {
           edges {
             node {
@@ -103,6 +103,6 @@ export default () => (
         }
       }
     `}
-    render={(data, count) => <ProductRoll data={data} count={count} />}
+    render={(data, count) => <BundlesRoll data={data} count={count} />}
   />
 );

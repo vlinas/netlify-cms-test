@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Link, graphql, StaticQuery } from "gatsby";
 import PreviewCompatibleImage from "./PreviewCompatibleImage";
 
-class ProductRoll extends React.Component {
+class GuidesRoll extends React.Component {
   render() {
     const { data } = this.props;
     const { edges: products } = data.allMarkdownRemark;
@@ -48,7 +48,7 @@ class ProductRoll extends React.Component {
                   )}
                 </div>
               </div>
-              {/* {JSON.stringify(products)} */}
+              {/* {JSON.stringify(product.frontmatter.stock)} */}
               {/* {(!product.frontmatter.live) == false && <p>asdasd</p>} */}
             </div>
           ))}
@@ -57,7 +57,7 @@ class ProductRoll extends React.Component {
   }
 }
 
-ProductRoll.propTypes = {
+GuidesRoll.propTypes = {
   data: PropTypes.shape({
     allMarkdownRemark: PropTypes.shape({
       edges: PropTypes.array
@@ -68,10 +68,10 @@ ProductRoll.propTypes = {
 export default () => (
   <StaticQuery
     query={graphql`
-      query ProductRollQuery {
+      query GuidesRollQuery {
         allMarkdownRemark(
           sort: { order: DESC, fields: [frontmatter___date] }
-          filter: { frontmatter: { templateKey: { eq: "product-page" } } }
+          filter: { frontmatter: { templateKey: { eq: "guides-page" } } }
         ) {
           edges {
             node {
@@ -103,6 +103,6 @@ export default () => (
         }
       }
     `}
-    render={(data, count) => <ProductRoll data={data} count={count} />}
+    render={(data, count) => <GuidesRoll data={data} count={count} />}
   />
 );
